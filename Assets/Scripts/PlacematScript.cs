@@ -11,7 +11,9 @@ public class PlacematScript : MonoBehaviour
     private PlacementManager placementManager;
     private Image image;
     private PlayerStats ps;
-    private bool once = true;
+
+    private string PlacematAllowedToSpawn;
+    private bool needsToSpawn;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,13 +53,6 @@ public class PlacematScript : MonoBehaviour
                 //SpawnAlienWhenGone();
             }
         }
-
-        if (ps.TimeLeftGame > 0 && once)
-        {
-            SpawnOutOfFocus();
-            SpawnAlienWhenGone();
-            once = false;
-        }
         
 
     }
@@ -92,31 +87,23 @@ public class PlacematScript : MonoBehaviour
             image.color = new Color(image.color.r, image.color.g, image.color.b, 0);
         }
     }
-    private void OnApplicationFocus(bool focus)
-    {
-        if (focus)
-        {
-            once = true;
-        }
-    }
-    private void OnApplicationPause(bool paused)
-    {
-        if (!paused)
-        {
-            once = true;
-        }  
-    }
-
-    private void SpawnAlienWhenGone()
+    
+    //it spawns without leaving the game, its not supposed to do that
+    //i did this to fix some bug  that i don't remember, wish i used github =((((
+    //at line 144 i made a comment on fixing the problem it is when i switched from spawning at each place to spawning above in placematManager
+    // how could this have caused the problem? you remembered before,
+    public void SpawnAlienWhenOutOfFocus(PlayerStats ps)
     {
         //needs to be done after loading in placemat decor
         LoadInScene loader = GameObject.Find("LoadIn").GetComponent<LoadInScene>();
+
+        //in the tutorial it should 100% likely to spawn
         if (ps.TutorialState == 9)
         {
             SpawningRandomRange = 0;
         } else
         {
-            SpawningRandomRange = 4;
+            SpawningRandomRange = 3;
         }
         int rand = UnityEngine.Random.Range(0, SpawningRandomRange);
         if (UnixTime.GetUnixTime(DateTime.Now) > ps.TimeTillCanSpawnAnAlien)
@@ -144,7 +131,8 @@ public class PlacematScript : MonoBehaviour
             " Time since last logged on " + (UnixTime.GetUnixTime(DateTime.Now) - ps.TimeLeftGame) / UnixTime.GetUnixTimeMinutes(1));
     }
 
-    private void SpawnOutOfFocus()
+    //depricated
+    private void SpawnGiftsWhenGone()
     {
         showData();
         
@@ -153,7 +141,9 @@ public class PlacematScript : MonoBehaviour
             //spawn aliens if gone for more then 20 minutes, spawn one for each 20
             long amountOfAliensToSpawn = (UnixTime.GetUnixTime(DateTime.Now) - ps.TimeLeftGame) / UnixTime.GetUnixTimeMinutes((long)(20.0f / ps.TimeScale));
             FileLogger.Log("Amount of aliens spawned when left: " + amountOfAliensToSpawn.ToString());
-            int rand = UnityEngine.Random.Range(0, 2);
+            int rand;
+            //because this can run like 10 times each individually on a placemat one placemat can hog all the cows most of the time
+            //parallel programming semaphores maybe
             for (int i = 0; i < amountOfAliensToSpawn; ++i)
             {
                 rand = UnityEngine.Random.Range(0, 2);
@@ -213,6 +203,75 @@ public class PlacematScript : MonoBehaviour
             }
         }
     }
+
+    public bool SpawnOneGift(PlayerStats ps)
+    {
+        int rand;
+        rand = UnityEngine.Random.Range(0, 2);
+        if (rand == 0)
+        {
+            if (SpawnedDecoration != null)
+            {
+
+                FileLogger.Log("Cows Count: " + ps.Cows.Count);
+                if (ps.Cows.Count > 0)
+                {
+                    GameObject cow = null;
+                    //cow = a cow with less then 100 risk
+                    foreach (GameObject co in GameObject.FindGameObjectsWithTag("Cow"))
+                    {
+                        if (co.GetComponent<CowData>().risk < 100)
+                        {
+                            cow = co;
+                        }
+                    }
+                    FileLogger.Log("Cows with less then 100 risk exists: " + (cow != null).ToString());
+                    if (cow != null)
+                    {
+                        DecorData data = SpawnedDecoration.GetComponent<DecorData>();
+
+                        PlanetManager pm = GameObject.Find("SaveState").GetComponent<PlanetManager>();
+
+                        List<GameObject> FilteredListWithPlanet = GetAliensPossible(data, pm);
+
+                        int randAlien = UnityEngine.Random.Range(0, FilteredListWithPlanet.Count);
+                        AlienData alienData = FilteredListWithPlanet[randAlien].GetComponentInChildren<AlienData>();
+
+                        if (cow != null)
+                        {
+                            cow.GetComponent<CowData>().risk += (30 - cow.GetComponent<CowData>().defense);
+                            for (int j = 0; j < ps.Cows.Count; j++)
+                            {
+                                Tuple<string, int, string> thisCow = ps.Cows[j];
+                                if (thisCow.Item1 == cow.name)
+                                {
+                                    ps.Cows[j] = new Tuple<string, int, string>(thisCow.Item1, cow.GetComponent<CowData>().risk, thisCow.Item3);
+                                }
+                            }
+                        }
+                        FileLogger.Log("adding offering: " + alienData.transform.parent.gameObject.name);
+                        ps.AlienGifts.Add(new Tuple<string, int>(alienData.transform.parent.gameObject.name, UnityEngine.Random.Range(1 + alienData.wealth, alienData.wealth * 2)));
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                } else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        } else
+        {
+            return true;
+        }
+    }
+
     private List<GameObject> GetAliensPossible(DecorData data, PlanetManager pm)
     {
         List<GameObject> FilteredListWithPlanet = new List<GameObject>();

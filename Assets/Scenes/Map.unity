@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5744,7 +5743,9 @@ MonoBehaviour:
   imageScale: 0.01
   OrderLayer: 2
   velocity: 2
-  tintColor: {r: 0.21, g: 0.21, b: 0.21, a: 1}
+  tintColor:
+    serializedVersion: 2
+    rgba: 4281874488
   type: 1
 --- !u!58 &199546594
 CircleCollider2D:
@@ -6273,7 +6274,9 @@ MonoBehaviour:
   imageScale: 0.01
   OrderLayer: 2
   velocity: 2
-  tintColor: {r: 0.21, g: 0.21, b: 0.21, a: 1}
+  tintColor:
+    serializedVersion: 2
+    rgba: 4281874488
   type: 1
 --- !u!1 &328930504
 GameObject:
@@ -12442,7 +12445,9 @@ MonoBehaviour:
   imageScale: 0.01
   OrderLayer: 2
   velocity: 2
-  tintColor: {r: 0.21, g: 0.21, b: 0.21, a: 1}
+  tintColor:
+    serializedVersion: 2
+    rgba: 4281874488
   type: 1
 --- !u!58 &574329196
 CircleCollider2D:
@@ -13615,7 +13620,9 @@ MonoBehaviour:
   imageScale: 0.01
   OrderLayer: 2
   velocity: 2
-  tintColor: {r: 0.21, g: 0.21, b: 0.21, a: 1}
+  tintColor:
+    serializedVersion: 2
+    rgba: 4281874488
   type: 1
 --- !u!1 &768820318
 GameObject:
@@ -14155,7 +14162,9 @@ MonoBehaviour:
   imageScale: 0.01
   OrderLayer: 2
   velocity: 2
-  tintColor: {r: 0.21, g: 0.21, b: 0.21, a: 1}
+  tintColor:
+    serializedVersion: 2
+    rgba: 4281874488
   type: 1
 --- !u!1 &901457647
 GameObject:
@@ -19524,7 +19533,9 @@ MonoBehaviour:
   imageScale: 0.01
   OrderLayer: 2
   velocity: 2
-  tintColor: {r: 0.21, g: 0.21, b: 0.21, a: 1}
+  tintColor:
+    serializedVersion: 2
+    rgba: 4281874488
   type: 1
 --- !u!1 &965251238
 GameObject:
@@ -19960,7 +19971,9 @@ MonoBehaviour:
   imageScale: 0.01
   OrderLayer: 2
   velocity: 2
-  tintColor: {r: 0.21, g: 0.21, b: 0.21, a: 1}
+  tintColor:
+    serializedVersion: 2
+    rgba: 4281874488
   type: 1
 --- !u!58 &1088914909
 CircleCollider2D:
@@ -26187,7 +26200,9 @@ MonoBehaviour:
   imageScale: 0.01
   OrderLayer: 2
   velocity: 2
-  tintColor: {r: 0.21, g: 0.21, b: 0.21, a: 1}
+  tintColor:
+    serializedVersion: 2
+    rgba: 4281874488
   type: 1
 --- !u!58 &1194997081
 CircleCollider2D:
@@ -27036,7 +27051,9 @@ MonoBehaviour:
   imageScale: 0.01
   OrderLayer: 2
   velocity: 2
-  tintColor: {r: 0.21, g: 0.21, b: 0.21, a: 1}
+  tintColor:
+    serializedVersion: 2
+    rgba: 4281874488
   type: 1
 --- !u!58 &1280657926
 CircleCollider2D:
@@ -32675,7 +32692,9 @@ MonoBehaviour:
   imageScale: 0.01
   OrderLayer: 2
   velocity: 2
-  tintColor: {r: 0.21, g: 0.21, b: 0.21, a: 1}
+  tintColor:
+    serializedVersion: 2
+    rgba: 4281874488
   type: 1
 --- !u!1 &1354450748
 GameObject:
@@ -32740,7 +32759,9 @@ MonoBehaviour:
   imageScale: 0.01
   OrderLayer: 2
   velocity: 2
-  tintColor: {r: 0.21, g: 0.21, b: 0.21, a: 1}
+  tintColor:
+    serializedVersion: 2
+    rgba: 4281874488
   type: 1
 --- !u!58 &1354450751
 CircleCollider2D:
@@ -33828,7 +33849,9 @@ MonoBehaviour:
   imageScale: 0.01
   OrderLayer: 2
   velocity: 2
-  tintColor: {r: 0.21, g: 0.21, b: 0.21, a: 1}
+  tintColor:
+    serializedVersion: 2
+    rgba: 4281874488
   type: 1
 --- !u!1 &1510690093
 GameObject:
@@ -34055,7 +34078,9 @@ MonoBehaviour:
   imageScale: 0.01
   OrderLayer: 2
   velocity: 2
-  tintColor: {r: 0.21, g: 0.21, b: 0.21, a: 1}
+  tintColor:
+    serializedVersion: 2
+    rgba: 4281874488
   type: 1
 --- !u!114 &1523212298
 MonoBehaviour:
@@ -34800,7 +34825,9 @@ MonoBehaviour:
   imageScale: 0.01
   OrderLayer: 2
   velocity: 2
-  tintColor: {r: 0.21, g: 0.21, b: 0.21, a: 1}
+  tintColor:
+    serializedVersion: 2
+    rgba: 4281874488
   type: 1
 --- !u!1 &1632539770
 GameObject:
@@ -34897,7 +34924,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1644819297
 RectTransform:
   m_ObjectHideFlags: 0
@@ -37679,7 +37706,9 @@ MonoBehaviour:
   imageScale: 0.01
   OrderLayer: 2
   velocity: 2
-  tintColor: {r: 0.21, g: 0.21, b: 0.21, a: 1}
+  tintColor:
+    serializedVersion: 2
+    rgba: 4281874488
   type: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

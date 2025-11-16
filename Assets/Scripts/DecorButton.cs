@@ -44,7 +44,7 @@ public class DecorButton : MonoBehaviour
         }
         if (PlacedText != null)
         {
-            if (ps.PlacematDecorations.ContainsValue(ContainedObject.name))
+            if (ps.PlacematDecorations.ContainsValue(ContainedObject.name) || ps.PlacedLampCurrent == ContainedObject.name)
             {PlacedText.SetActive(true);} else
             {PlacedText.SetActive(false);}
         }
@@ -71,6 +71,27 @@ public class DecorButton : MonoBehaviour
 
         }
     }
+    public void triggerLampPurchase()
+    {
+        if (ps.Scrap >= cost)
+        {
+            if (ps.OwnedLamps == null)
+            {
+                ps.OwnedLamps = new List<string>();
+            }
+            if (!ps.OwnedLamps.Contains(ContainedObject.name))
+            {
+                ps.Scrap -= cost;
+                ps.OwnedLamps.Add(ContainedObject.name);
+                LockButton lbo = GetComponent<LockButton>();
+                if (lbo != null)
+                {
+                    lbo.lockButton();
+                }
+            }
+
+        }
+    }
     public void triggerPurchaseCow()
     {
         if (ps.Scrap >= cost)
@@ -88,6 +109,7 @@ public class DecorButton : MonoBehaviour
         }
     }
 
+
     public void triggerPlacement()
     {
         placementManager.ObjectToPlace = ContainedObject;
@@ -99,5 +121,11 @@ public class DecorButton : MonoBehaviour
         placementManager.ObjectToPlace = ContainedObject;
         placementManager.CurrentlyPlacingCow = true;
         ps.OwnedCows[ContainedObject.name] = ps.OwnedCows[ContainedObject.name] - 1;
+    }
+
+    public void triggerLampPlacement()
+    {
+        placementManager.ObjectToPlace = ContainedObject;
+        ps.PlacedLampCurrent = ContainedObject.name;
     }
 }

@@ -13,7 +13,7 @@ public class PlaySound : MonoBehaviour
     public float imageScale = 2;
     public int OrderLayer = 2;
     public float velocity = 2;
-    public Color tintColor = new Color(0.21f, 0.21f, 0.21f, 1.0f);
+    public Color32 tintColor = new Color32(56, 56, 56, 255);
     public enum SoundType
     {
         AMBIENT,

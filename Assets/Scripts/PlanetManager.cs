@@ -98,6 +98,7 @@ public class PlanetManager : MonoBehaviour
                 if (ps.TravelLocation.Item1 == CurrentPlanet.ToString())
                 {
                     currentPlanet = CurrentPlanet;
+                    break;
                 }
             }
         }

@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Map.unity
     guid: c17179ccf7b6a9c4a94de294016a61b8
+  - enabled: 1
+    path: Assets/Scenes/ShopLamp.unity
+    guid: c74addc91f4a1704095c9d86509ebfdb
   m_configObjects: {}

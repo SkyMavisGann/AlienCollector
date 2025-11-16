@@ -17,6 +17,10 @@ public class LockButton : MonoBehaviour
         {
             ps = pso.GetComponent<PlayerStats>();
         }
+        if (ps.OwnedLamps == null)
+        {
+            ps.OwnedLamps = new List<string>();
+        }
 
         if (lockOnOwned)
         {
@@ -24,7 +28,7 @@ public class LockButton : MonoBehaviour
             {
                 ps.OwnedItems = new List<string>();
             }
-            if (ps.OwnedItems.Contains(decor.ContainedObject.name))
+            if (ps.OwnedItems.Contains(decor.ContainedObject.name) || ps.OwnedLamps.Contains(decor.ContainedObject.name))
             {
                 lockButton();
             }

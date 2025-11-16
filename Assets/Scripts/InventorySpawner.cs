@@ -11,6 +11,7 @@ public class InventorySpawner : MonoBehaviour
     public Transform Item2;
     public GameObject TemplateCow;
     public GameObject TemplateItem;
+    public GameObject TemplateLamp;
     public Transform MarkerTemplate;
 
     private PlayerStats ps;
@@ -54,6 +55,19 @@ public class InventorySpawner : MonoBehaviour
             Debug.Log("spawning Item");
             items.Add(Instantiate(TemplateItem, Item1.position - (distance * fullDistanceDown), Item1.rotation, transform));
             GameObject itemObject = Resources.Load<GameObject>("Decor/" + ps.OwnedItems[i]);
+            items[fullDistanceDown].SetActive(true);
+            items[fullDistanceDown].GetComponentInChildren<DecorButton>().ContainedObject = itemObject;
+            fullDistanceDown++;
+        }
+        if (ps.OwnedLamps == null)
+        {
+            ps.OwnedLamps = new List<string>();
+        }
+        for (int i = 0; i < ps.OwnedLamps.Count; i++)
+        {
+            Debug.Log("spawning Item");
+            items.Add(Instantiate(TemplateLamp, Item1.position - (distance * fullDistanceDown), Item1.rotation, transform));
+            GameObject itemObject = Resources.Load<GameObject>("LavaLamps/" + ps.OwnedLamps[i]);
             items[fullDistanceDown].SetActive(true);
             items[fullDistanceDown].GetComponentInChildren<DecorButton>().ContainedObject = itemObject;
             fullDistanceDown++;

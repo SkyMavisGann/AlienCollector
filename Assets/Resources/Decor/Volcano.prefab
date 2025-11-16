@@ -130,7 +130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7476962474605637509, guid: 7260843aca752ef4395e35e4c7d7d1ba, type: 3}
       propertyPath: PossibleAliensToSpawn.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7476962474605637509, guid: 7260843aca752ef4395e35e4c7d7d1ba, type: 3}
       propertyPath: PossibleAliensToSpawn.Array.data[0]
@@ -144,6 +144,10 @@ PrefabInstance:
       propertyPath: PossibleAliensToSpawn.Array.data[2]
       value: 
       objectReference: {fileID: 8235972047164219004, guid: 354b5f2b8108cf34783647d4350fe899, type: 3}
+    - target: {fileID: 7476962474605637509, guid: 7260843aca752ef4395e35e4c7d7d1ba, type: 3}
+      propertyPath: PossibleAliensToSpawn.Array.data[3]
+      value: 
+      objectReference: {fileID: 5910256359666090019, guid: 095cf566ce187c640a62a6470b55f663, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

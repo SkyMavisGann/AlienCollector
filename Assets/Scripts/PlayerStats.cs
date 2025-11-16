@@ -36,6 +36,8 @@ public class PlayerStats : MonoBehaviour
     //id, amount of cows owned;
     public Dictionary<string, int> OwnedCows = new Dictionary<string, int>();
     public List<string> OwnedItems = new List<string>();
+    public List<string> OwnedLamps = new List<string>();
+    public string PlacedLampCurrent = "LavaLampBlue";
 
     public List<Tuple<string, int>> AlienGifts = new List<Tuple<string, int>>();
     public List<string> DiscoveredAliens = new List<string>();
@@ -53,6 +55,7 @@ public class PlayerStats : MonoBehaviour
     public float TimeScale = 1;
 
     public bool UpgradedShip = false;
+    public bool BeenToMercury = false;
     //locationName, ETA arriving, TimeLeft, Destination Coords of, startPositon coords
     public Tuple<string, long, long, Tuple<float, float>, Tuple<float, float>> TravelLocation;
     public Tuple<float, float> TargetPosition;

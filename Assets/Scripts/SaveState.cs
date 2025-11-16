@@ -13,6 +13,7 @@ public class SaveState
     public long timeTillCanSpawnAnAlien;
     public Dictionary<string, int> ownedCows = new Dictionary<string, int>();
     public List<string> ownedItems = new List<string>();
+    public List<string> ownedLamps = new List<string>();
     public List<Tuple<string, int>> alienGifts = new List<Tuple<string, int>>();
     public long timeLeftGame = 0;
     public List<string> discoveredAliens = new List<string>();
@@ -24,6 +25,8 @@ public class SaveState
     public bool upgradedShip;
     public Tuple<string, long, long, Tuple<float, float>, Tuple<float, float>> travelLocation;
     public Tuple<float, float> targetPosition;
+    public bool beenToMercury;
+    public string placedLampCurrent = "LavaLampBlue";
 
     public SaveState(PlayerStats ps) 
     {
@@ -45,5 +48,8 @@ public class SaveState
         upgradedShip = ps.UpgradedShip;
         travelLocation = ps.TravelLocation;
         targetPosition = ps.TargetPosition;
+        beenToMercury = ps.BeenToMercury;
+        ownedLamps = ps.OwnedLamps;
+        placedLampCurrent = ps.PlacedLampCurrent;
     }
 }

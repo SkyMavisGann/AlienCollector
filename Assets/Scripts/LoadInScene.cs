@@ -74,5 +74,8 @@ public class LoadInScene : MonoBehaviour
         ps.UpgradedShip = save.upgradedShip;
         ps.TravelLocation = save.travelLocation;
         ps.TargetPosition = save.targetPosition;
+        ps.BeenToMercury = save.beenToMercury;
+        ps.OwnedLamps = save.ownedLamps;
+        ps.PlacedLampCurrent = save.placedLampCurrent;
     }
 }

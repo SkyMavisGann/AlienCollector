@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 523616994607824372}
   - component: {fileID: 7892713397763570046}
   - component: {fileID: 3918116971723535042}
+  - component: {fileID: 5523862413046820194}
   m_Layer: 5
   m_Name: SpaceSuitSprite
   m_TagString: Untagged
@@ -75,6 +76,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5523862413046820194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4041572550133210877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b6b624273d41dc4d80275c5a3bcdf1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5735460666574424918
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,15 +31,15 @@ public class ScalePlanetNear : MonoBehaviour
         }
         if (ps.UpgradedShip)
         {
-            DateTime eta = DateTime.UnixEpoch;
             if (ps.TravelLocation != null && ps.TravelLocation.Item1 == planetName)
             {
-                eta = UnixTime.GetDateTime(ps.TravelLocation.Item2);
+                DateTime eta = UnixTime.GetDateTime(ps.TravelLocation.Item2);
+                TimeSpan Difference = eta - UnixTime.GetDateTime(UnixTime.Now());
+                totalMinutes = Mathf.Clamp((float)Difference.TotalMinutes, 0, Mathf.Infinity);
+                float multiplier = Mathf.Clamp(1 - totalMinutes * scaleAmount, 0, Mathf.Infinity);
+                transform.localScale = new Vector3(originalScale.x * multiplier, originalScale.y * multiplier, originalScale.z);
             }
-            TimeSpan Difference = eta - UnixTime.GetDateTime(UnixTime.Now());
-            totalMinutes = Mathf.Clamp((float)Difference.TotalMinutes, 0, Mathf.Infinity);
-            float multiplier = Mathf.Clamp(1 - Mathf.Abs((float)Difference.TotalMinutes * scaleAmount), 0, Mathf.Infinity);
-            transform.localScale = new Vector3(originalScale.x * multiplier, originalScale.y * multiplier, originalScale.z);
+            
         }
         
     }
